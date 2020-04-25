@@ -7,8 +7,10 @@ demystify methods of [redux](https://redux.js.org/) library for easy understandi
 ## methods
 * [applyMiddleware](applyMiddleware.js) - Middleware lets you extend Redux with custom functionality.
 * [compose](./compose.js) - Composes functions from right to left.
+* [combineReducers](./combineReducers.js) - Function turns an object whose values are different reducing functions into a single reducing function.
 
 ## example
+* applyMiddleware
 ```ecmascript 6
 
 const {applyMiddleware} = require('./applyMiddleware');
@@ -67,5 +69,49 @@ if(dispatch){
     dispatch("a");
 }
 
+```
+
+* combineReducers
+```ecmascript 6
+
+const {combineReducers} = require('./combineReducers');
+
+const firstReducer = (state = {},action ) => {
+    switch (action.type) {
+        case 'f':
+            return Object.assign({},state,{
+                key: 'f'
+            });
+        case 'ff':
+            return Object.assign({},state,{
+                key: 'ff'
+            });
+        default : return state;
+    }
+};
+
+const secondReducer = (state = {},action ) => {
+    switch (action.type) {
+        case 's':
+            return Object.assign({},state,{
+                key: 's'
+            });
+        case 'ss':
+            return Object.assign({},state,{
+                key: 'ss'
+            });
+        default : return state;
+    }
+};
+
+const rootReducer = combineReducers({firstReducer,secondReducer});
+let state = {'key':''};
+console.log("initial state => ", state);
+state = rootReducer(state,{type:"f"});
+console.log("after first update => ",state);
+state = rootReducer(state,{type:"ff"});
+console.log("after second update => ",state);
+state = rootReducer(state,{type:"s"});
+console.log("after third update => ",state);
 ```
 
