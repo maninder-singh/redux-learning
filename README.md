@@ -1,12 +1,12 @@
 # redux-learning 
 
-demystify methods of redux library for easy understanding of how it's internally implemented.
+demystify methods of [redux](https://redux.js.org/) library for easy understanding of how it's internally implemented.
 
 *Note : not an exact redux method implementation but a simpler version*
 
 ## methods
-* [applyMiddleware](applyMiddleware.js)
-* [compose](./compose.js) 
+* [applyMiddleware](applyMiddleware.js) - Middleware lets you extend Redux with custom functionality.
+* [compose](./compose.js) - Composes functions from right to left.
 
 ## example
 ```ecmascript 6
